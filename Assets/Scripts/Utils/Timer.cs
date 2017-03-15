@@ -21,6 +21,7 @@ namespace Utils {
         private Timer() { }
 
         void Awake() {
+
             if (Instance == null) {
                 Instance = this;
             }
