@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace Utils {
+namespace Assets.Scripts.Utils {
 
     public enum SoundType {
         MainMenu, Other
@@ -32,9 +32,9 @@ namespace Utils {
             SoundLookup.Add(SoundType.Other, Other);
         }
 
-        public void PlaySound(SoundType type) {
+        public void PlaySound(SoundType type, bool stopCurrentSound) {
             AudioClip clip = SoundLookup[type];
-            if (MainSource.isPlaying) {
+            if (stopCurrentSound && MainSource.isPlaying) {
                 MainSource.Stop();
             }
             MainSource.clip = clip;

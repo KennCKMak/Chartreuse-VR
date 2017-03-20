@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Utils {
+namespace Assets.Scripts.Utils {
 
     public class Timer : MonoBehaviour {
 
         // Default starting time in seconds
-        public const float DefaultStartingTime = 100;
+        public const float DefaultStartingTime = 300; // 5 minutes
 
         // Timer static instance
         public static Timer Instance;
@@ -31,16 +31,12 @@ namespace Utils {
             DontDestroyOnLoad(gameObject);
         }
 
-        public void StartTimer() {
-            TickCoroutine = StartCoroutine(OnTick());
-        }
-
         public void StopTimer() {
             StopCoroutine(TickCoroutine);
         }
 
-        public void ResetTimer() {
-            Time = DefaultStartingTime;
+        public float GetTimeRemaining() {
+            return Time;
         }
 
         public string GetFormattedTime() {
@@ -52,7 +48,7 @@ namespace Utils {
                 Time--;
 
                 if(Time == 0) {
-                    //EndGame(GameCondition.TimeRanOut);
+                    // TODO: End game here.
                 }
                 yield return new WaitForSeconds(1f);
             }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 
 public class PlayerMovement : MonoBehaviour {
 	public float floatForce = 2;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 		VerticalInput ();
 		SwimInput ();
 		Waves ();
-		Debug.Log (rigB.velocity.x);
+		//Debug.Log (rigB.velocity.x);
 	}
 
 	void VerticalInput() {
