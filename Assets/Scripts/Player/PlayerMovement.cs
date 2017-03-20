@@ -42,22 +42,29 @@ public class PlayerMovement : MonoBehaviour {
 
 	void SwimInput() {
 		if (Input.GetKey (KeyCode.W))
-			rigB.AddForce ( transform.forward * moveSpeed);
+			rigB.AddForce (transform.forward * moveSpeed);
 		else if (Input.GetKey (KeyCode.S))
 			rigB.AddForce (-transform.forward * moveSpeed);
-		else {
-			if (rigB.velocity.x <= 0.1 && rigB.velocity.x >= -0.1)
+	/*else {
+			if (rigB.velocity.x <= 0.1 && rigB.velocity.x >= -0.1) {
+				Debug.Log ("1");
 				rigB.velocity = new Vector3 (0, rigB.velocity.y, rigB.velocity.z);
-			else if (rigB.velocity.x >= 0)
-				rigB.AddForce (new Vector3 (0,-moveSpeed, 0));
-			else if (rigB.velocity.x <= 0)
-				rigB.AddForce (new Vector3 (0, moveSpeed, 0));
-		}
+			} else
+				if (rigB.velocity.x > 0) {
+				Debug.Log ("2");
+				rigB.AddForce (new Vector3 (-moveSpeed, 0, 0));
+			} else if (rigB.velocity.x < 0) {
+				Debug.Log ("3");
+				rigB.AddForce (new Vector3 (moveSpeed, 0, 0));
+			}
+		}*/
 		
 		if (Input.GetKey (KeyCode.D))
-			transform.Rotate (new Vector3(0, rotSpeed, 0) * Time.deltaTime);
+			rigB.AddForce (transform.right * moveSpeed);
+			//transform.Rotate (new Vector3(0, rotSpeed, 0) * Time.deltaTime);
 		if (Input.GetKey (KeyCode.A))
-			transform.Rotate (new Vector3(0,-rotSpeed, 0) * Time.deltaTime);
+			rigB.AddForce (transform.right * -moveSpeed);
+			//transform.Rotate (new Vector3(0,-rotSpeed, 0) * Time.deltaTime);
 	}
 
 	void Waves() {
