@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace Assets.Scripts.Utils {
+namespace Utils {
 
     public enum SoundType {
         MainMenu, Other
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Utils {
         public static readonly AudioClip MainMenu;
         public static readonly AudioClip Other;
 
-        private readonly Dictionary<SoundType, AudioClip> SoundLookup = new Dictionary<SoundType, AudioClip>();
+        private readonly Dictionary<SoundType, AudioClip> _soundLookup = new Dictionary<SoundType, AudioClip>();
 
         // Private constructor since this is a singleton.
         private SoundManager() { }
@@ -28,12 +28,12 @@ namespace Assets.Scripts.Utils {
 
             DontDestroyOnLoad(gameObject);
 
-            SoundLookup.Add(SoundType.MainMenu, MainMenu);
-            SoundLookup.Add(SoundType.Other, Other);
+            _soundLookup.Add(SoundType.MainMenu, MainMenu);
+            _soundLookup.Add(SoundType.Other, Other);
         }
 
         public void PlaySound(SoundType type, bool stopCurrentSound) {
-            AudioClip clip = SoundLookup[type];
+            AudioClip clip = _soundLookup[type];
             if (stopCurrentSound && MainSource.isPlaying) {
                 MainSource.Stop();
             }

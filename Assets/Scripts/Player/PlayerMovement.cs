@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-
 public class PlayerMovement : MonoBehaviour {
+
 	public float floatForce = 2;
 	public float moveSpeed = 10;
 	public float rotSpeed = 10;
@@ -11,16 +11,21 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rigB = this.GetComponent<Rigidbody> ();
+		rigB = GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		VerticalInput ();
-		SwimInput ();
-		Waves ();
+	    CameraMovement();
+		VerticalInput();
+		SwimInput();
+		Waves();
 		//Debug.Log (rigB.velocity.x);
 	}
+
+    private void CameraMovement() {
+
+    }
 
 	void VerticalInput() {
 		if (Input.GetKey (KeyCode.Space)) {
