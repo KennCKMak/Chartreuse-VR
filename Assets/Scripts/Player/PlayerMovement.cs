@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-
 	public float floatForce = 2;
 	public float moveSpeed = 10;
 	public float rotSpeed = 10;
@@ -11,21 +11,15 @@ public class PlayerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rigB = GetComponent<Rigidbody>();
+		rigB = this.GetComponent<Rigidbody> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-	    CameraMovement();
-		VerticalInput();
-		SwimInput();
-		Waves();
-		//Debug.Log (rigB.velocity.x);
+		VerticalInput ();
+		SwimInput ();
+		Waves ();
 	}
-
-    private void CameraMovement() {
-
-    }
 
 	void VerticalInput() {
 		if (Input.GetKey (KeyCode.Space)) {
@@ -47,33 +41,18 @@ public class PlayerMovement : MonoBehaviour {
 
 	void SwimInput() {
 		if (Input.GetKey (KeyCode.W))
-			rigB.AddForce (transform.forward * moveSpeed);
+			rigB.AddForce ( transform.forward * moveSpeed);
 		else if (Input.GetKey (KeyCode.S))
 			rigB.AddForce (-transform.forward * moveSpeed);
-	/*else {
-			if (rigB.velocity.x <= 0.1 && rigB.velocity.x >= -0.1) {
-				Debug.Log ("1");
-				rigB.velocity = new Vector3 (0, rigB.velocity.y, rigB.velocity.z);
-			} else
-				if (rigB.velocity.x > 0) {
-				Debug.Log ("2");
-				rigB.AddForce (new Vector3 (-moveSpeed, 0, 0));
-			} else if (rigB.velocity.x < 0) {
-				Debug.Log ("3");
-				rigB.AddForce (new Vector3 (moveSpeed, 0, 0));
-			}
-		}*/
 		
 		if (Input.GetKey (KeyCode.D))
-			rigB.AddForce (transform.right * moveSpeed);
-			//transform.Rotate (new Vector3(0, rotSpeed, 0) * Time.deltaTime);
+			transform.Rotate (new Vector3(0, rotSpeed, 0) * Time.deltaTime);
 		if (Input.GetKey (KeyCode.A))
-			rigB.AddForce (transform.right * -moveSpeed);
-			//transform.Rotate (new Vector3(0,-rotSpeed, 0) * Time.deltaTime);
+			transform.Rotate (new Vector3(0,-rotSpeed, 0) * Time.deltaTime);
 	}
 
 	void Waves() {
 		wavePos += waveSpeed * Time.deltaTime;
-		transform.Translate(new Vector3(0, Mathf.Sin(wavePos) / 600, 0));
+		transform.Translate(new Vector3(0, Mathf.Sin(wavePos) / 400, 0));
 	}
 }

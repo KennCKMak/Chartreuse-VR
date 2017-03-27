@@ -1,4 +1,4 @@
-﻿
+
 using Assets.Scripts;
 using UnityEngine;
 
@@ -38,10 +38,6 @@ namespace Utils {
 
         public float GetTimeRemaining() {
             return OxygenTimer;
-        }
-
-        public string GetFormattedTime() {
-            return string.Format("{0:D2}:{1:D2}", OxygenTimer / 60, OxygenTimer % 60);
         }
     }
 }
