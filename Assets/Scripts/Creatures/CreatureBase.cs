@@ -19,8 +19,7 @@ public class CreatureBase : MonoBehaviour {
 	}
 	public CreatureState CurrentState;
 
-	protected Transform myTransform; //my transform
-	protected GameObject target;
+	public GameObject target;
 	protected Vector3 targetPosition; //destination transform
 
 	public float curSpeed;
@@ -49,12 +48,12 @@ public class CreatureBase : MonoBehaviour {
 	}
 
 
-	protected virtual void Initialize() {
+	public virtual void Initialize() {
 		CurrentState = CreatureState.Wander;
 		targetPosition = transform.position;
 		curSpeed = 4.0f; curRotSpeed = 5.0f;
-		target = transform.GetChild (0).gameObject;
-		target.transform.parent = null;
+		SetTarget (transform.GetChild (0).gameObject);
+		SetTargetParent (null);
 		GetNewWanderTarget ();
 	}
 
@@ -73,21 +72,20 @@ public class CreatureBase : MonoBehaviour {
 		case CreatureState.Dead:
 			break;
 		}
-
 		elapsedTime += Time.deltaTime;
 	}
 
-	protected void UpdateWanderState() {
+	protected virtual void UpdateWanderState() {
 		if (target.transform.name == "Food") { //arbitrary case to initiate chase status
 			SwitchCurrentStateTo (CreatureState.Chase);
 		} else {
-			if (elapsedTime > 10.0f) // Mathf.Abs(Vector3.Distance(targetPosition, transform.position)) <= 0.000005f
+			if (elapsedTime > 7.0f) // Mathf.Abs(Vector3.Distance(targetPosition, transform.position)) <= 0.000005f
 				GetNewWanderTarget ();
 			MoveToward (target.transform.position);
 		}
 	}
 
-	protected void UpdateChaseState(){
+	protected virtual void UpdateChaseState(){
 		MoveToward (target.transform.position);
 		if (Mathf.Abs(Vector3.Distance(target.transform.position, transform.position)) <= 2.0f) { //if reached chase target, attack
 			SwitchCurrentStateTo(CreatureState.Attack);
@@ -97,7 +95,7 @@ public class CreatureBase : MonoBehaviour {
 		
 	}
 
-	protected void UpdateAttackState(){
+	protected virtual void UpdateAttackState(){
 		if (Mathf.Abs(Vector3.Distance(target.transform.position, transform.position)) <= 2.0f) { //start lunging
 			AttackTarget (target);
 		}
@@ -110,16 +108,27 @@ public class CreatureBase : MonoBehaviour {
 		}
 	}
 
-	protected void GetNewWanderTarget(){
+	protected virtual void GetNewWanderTarget(){
 		elapsedTime = 0;
-		targetPosition = new Vector3 (Random.Range (-10.0f, 10.0f), 7, Random.Range (-10.0f, 10.0f));
-		target.transform.position = targetPosition;
+		MoveTarget(new Vector3 (Random.Range (-10.0f, 10.0f), 7, Random.Range (-10.0f, 10.0f)));
 
 		//randomizer between food or waypoint for target test
-		if (Random.Range (0, 2) == 0)
+		/*if (Random.Range (0, 3) == 0)
 			target.transform.name = "WayPoint";
 		else
-			target.transform.name = "Food";
+			target.transform.name = "Food";*/
+	}
+
+	public void MoveTarget(Vector3 targetLocation){
+		target.transform.position = targetLocation;
+	}
+
+	public void SetTarget(GameObject newTarget){
+		target = newTarget;
+	}
+
+	public void SetTargetParent(Transform newParent){
+		target.transform.parent = newParent;
 	}
 
 	protected void MoveToward(Vector3 targetLocation){
