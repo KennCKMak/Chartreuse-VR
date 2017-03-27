@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43697035, g: 0.4846509, b: 0.564908, a: 1}
+  m_IndirectSpecularColor: {r: 0.43697068, g: 0.4846509, b: 0.56490886, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -122,10 +122,10 @@ MonoBehaviour:
   size: {x: 185.6, y: 1, z: 187.8}
   quantity: 100
   objectsPrefab:
-  - {fileID: 1696428811816726, guid: 9d6e720dbb39d6541bca0e09f6d92ced, type: 2}
+  - {fileID: 0}
   - {fileID: 100000, guid: 53414ab72ac45614684af7a6985b2c85, type: 2}
   - {fileID: 100000, guid: 35483354210b51844a7110a01c7b4f3a, type: 2}
-  - {fileID: 1289080738873920, guid: 05b6e4151ee0d4642abe5a75f3d022c7, type: 2}
+  - {fileID: 0}
   - {fileID: 100000, guid: 532066205bc320d4aa4647332e9d2ffa, type: 2}
 --- !u!4 &810999836
 Transform:
