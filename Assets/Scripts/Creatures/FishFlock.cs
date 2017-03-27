@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class FishFlock : MonoBehaviour {
@@ -26,7 +25,7 @@ public class FishFlock : MonoBehaviour {
 			Fishes [i] = newFish;
 		}
 
-		target = transform.FindChild ("FlockTarget");
+		target = transform.FindChild ("FlockTarget").gameObject;
 	
 	}
 	
