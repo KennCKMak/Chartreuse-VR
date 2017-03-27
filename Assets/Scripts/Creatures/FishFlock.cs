@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System.Colletions.Generic;
 using UnityEngine;
 
 public class FishFlock : MonoBehaviour {
@@ -30,6 +30,10 @@ public class FishFlock : MonoBehaviour {
 			Fishes [i] = newFish;
 		}
 
+<<<<<<< HEAD
+=======
+		target = transform.FindChild ("FlockTarget").gameObject;
+>>>>>>> origin/master
 	
 	}
 	
