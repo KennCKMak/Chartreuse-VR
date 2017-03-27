@@ -398,7 +398,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4750253937511220, guid: 711039de1940a4b4c85b3fce3d1b9673, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: -1.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 711039de1940a4b4c85b3fce3d1b9673, type: 2}

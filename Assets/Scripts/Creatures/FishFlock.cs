@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Colletions.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FishFlock : MonoBehaviour {
@@ -29,12 +29,6 @@ public class FishFlock : MonoBehaviour {
 			newFish.GetComponent<Fish> ().SetTargetParent (this.transform);
 			Fishes [i] = newFish;
 		}
-
-<<<<<<< HEAD
-=======
-		target = transform.FindChild ("FlockTarget").gameObject;
->>>>>>> origin/master
-	
 	}
 	
 	// Update is called once per frame
