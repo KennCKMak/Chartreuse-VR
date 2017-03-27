@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿
 using Assets.Scripts;
 using UnityEngine;
 
@@ -9,49 +9,39 @@ namespace Utils {
         // Timer static instance
         public static Timer Instance;
 
-        // Coroutine tick variable to keep track of countdown.
-        private Coroutine _tickCoroutine;
-
         // Current time remaining
-        public int Time = 300; // 5 minutes
+        public float OxygenTimer = 300; // 5 minutes
+
+        public float DefaultStartingTimer;
 
         // Private constructor since this is a singleton.
         private Timer() { }
 
         void Awake() {
 
-            if (Instance == null) {
+            if (Instance == null)
                 Instance = this;
-            }
+
             else if (Instance != this)
                 Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
-            _tickCoroutine = StartCoroutine(OnTick());
+            DefaultStartingTimer = OxygenTimer;
         }
 
-        public void StopTimer() {
-            StopCoroutine(_tickCoroutine);
+        void Update() {
+            OxygenTimer -= Time.deltaTime;
+            if (OxygenTimer <= 0) {
+                GameManager.Instance.EndGame();
+            }
         }
 
-        public int GetTimeRemaining() {
-            return Time;
+        public float GetTimeRemaining() {
+            return OxygenTimer;
         }
 
         public string GetFormattedTime() {
-            return string.Format("{0:D2}:{1:D2}", Time / 60, Time % 60);
-        }
-
-        private IEnumerator OnTick() {
-            while(true) {
-                Time--;
-
-                if(Time == 0) {
-                    StopTimer();
-                    GameManager.Instance.EndGame();
-                }
-                yield return new WaitForSeconds(1f);
-            }
+            return string.Format("{0:D2}:{1:D2}", OxygenTimer / 60, OxygenTimer % 60);
         }
     }
 }
