@@ -1,19 +1,21 @@
 ﻿using System.Collections;
-using Assets.Scripts;
 using UnityEngine;
 
 namespace Utils {
 
     public class Timer : MonoBehaviour {
 
+        // Default starting time in seconds
+        public const float DefaultStartingTime = 100;
+
         // Timer static instance
         public static Timer Instance;
 
         // Coroutine tick variable to keep track of countdown.
-        private Coroutine _tickCoroutine;
+        private Coroutine TickCoroutine;
 
         // Current time remaining
-        public int Time = 300; // 5 minutes
+        private float Time;
 
         // Private constructor since this is a singleton.
         private Timer() { }
@@ -27,15 +29,18 @@ namespace Utils {
                 Destroy(gameObject);
 
             DontDestroyOnLoad(gameObject);
-            _tickCoroutine = StartCoroutine(OnTick());
+        }
+
+        public void StartTimer() {
+            TickCoroutine = StartCoroutine(OnTick());
         }
 
         public void StopTimer() {
-            StopCoroutine(_tickCoroutine);
+            StopCoroutine(TickCoroutine);
         }
 
-        public int GetTimeRemaining() {
-            return Time;
+        public void ResetTimer() {
+            Time = DefaultStartingTime;
         }
 
         public string GetFormattedTime() {
@@ -47,8 +52,7 @@ namespace Utils {
                 Time--;
 
                 if(Time == 0) {
-                    StopTimer();
-                    GameManager.Instance.EndGame();
+                    //EndGame(GameCondition.TimeRanOut);
                 }
                 yield return new WaitForSeconds(1f);
             }

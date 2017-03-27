@@ -15,7 +15,7 @@ namespace Utils {
         public static readonly AudioClip MainMenu;
         public static readonly AudioClip Other;
 
-        private readonly Dictionary<SoundType, AudioClip> _soundLookup = new Dictionary<SoundType, AudioClip>();
+        private readonly Dictionary<SoundType, AudioClip> SoundLookup = new Dictionary<SoundType, AudioClip>();
 
         // Private constructor since this is a singleton.
         private SoundManager() { }
@@ -28,13 +28,13 @@ namespace Utils {
 
             DontDestroyOnLoad(gameObject);
 
-            _soundLookup.Add(SoundType.MainMenu, MainMenu);
-            _soundLookup.Add(SoundType.Other, Other);
+            SoundLookup.Add(SoundType.MainMenu, MainMenu);
+            SoundLookup.Add(SoundType.Other, Other);
         }
 
-        public void PlaySound(SoundType type, bool stopCurrentSound) {
-            AudioClip clip = _soundLookup[type];
-            if (stopCurrentSound && MainSource.isPlaying) {
+        public void PlaySound(SoundType type) {
+            AudioClip clip = SoundLookup[type];
+            if (MainSource.isPlaying) {
                 MainSource.Stop();
             }
             MainSource.clip = clip;
