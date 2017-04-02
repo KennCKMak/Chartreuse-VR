@@ -6,18 +6,12 @@ public class Fish : CreatureBase {
 
 	// Use this for initialization
 	void Start () {
-		Initialize ();
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		CreatureUpdate ();
-	}
-
-	public override void Initialize(){
-		CurrentState = CreatureState.Wander;
-		curSpeed = 4.0f; 
-		curRotSpeed = 5.0f;
 	}
 
 	protected override void UpdateWanderState() {

@@ -38,8 +38,12 @@ public class CreatureBase : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+
+	void Awake() {
 		Initialize ();	
+	}
+
+	void Start () {
 	}
 	
 	// Update is called once per frame
@@ -52,7 +56,8 @@ public class CreatureBase : MonoBehaviour {
 		CurrentState = CreatureState.Wander;
 		targetPosition = transform.position;
 		curSpeed = 4.0f; curRotSpeed = 5.0f;
-		SetTarget (transform.GetChild (0).gameObject);
+		SetTarget (transform.FindChild("Target").gameObject);
+		Debug.Log ("Setting Target");
 		SetTargetParent (null);
 		GetNewWanderTarget ();
 	}
@@ -142,7 +147,16 @@ public class CreatureBase : MonoBehaviour {
 
 	protected void AttackTarget(GameObject attackTarget){
 		if(!attacking) {
-			transform.LookAt (attackTarget.transform.position, Vector3.forward); //lunging, can not turn
+			//transform.LookAt (attackTarget.transform.position, Vector3.forward); //lunging, can not turn
+
+			Vector3 newRot = Vector3.RotateTowards 
+				(transform.forward,  //direction face of which side should point to it
+					attackTarget.transform.position - transform.position, //direction vector
+					curRotSpeed * 1000 * Time.deltaTime, 0.0f); //rotatoin speed, max magnitude
+			transform.rotation = Quaternion.LookRotation(newRot); //rotate to new vector
+
+
+
 			attacking = true; //you are now attacking
 		}
 		transform.Translate (Vector3.forward * Time.deltaTime * curSpeed * 5);//lunging towards food
