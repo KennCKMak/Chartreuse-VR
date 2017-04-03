@@ -24,7 +24,6 @@ public class FishFlock : MonoBehaviour {
 		GetFishLocations ();
 		for (int i = 0; i < FishCount; i++) {
 			GameObject newFish = Instantiate (FishPrefab, fishLocations [i], Quaternion.identity) as GameObject;
-			Debug.Log ("Location = " + fishLocations [i]);
 			newFish.GetComponent<Fish> ().MoveTarget (fishLocations [i]);
 			newFish.GetComponent<Fish> ().SetTargetParent (this.transform);
 

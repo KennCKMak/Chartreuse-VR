@@ -26,7 +26,8 @@ public class SimpleSmoothMouseLook : MonoBehaviour
         targetDirection = transform.localRotation.eulerAngles;
 
         // Set target direction for the character body to its inital state.
-        if (characterBody) targetCharacterDirection = characterBody.transform.localRotation.eulerAngles;
+        if (characterBody) 
+			targetCharacterDirection = characterBody.transform.localRotation.eulerAngles;
     }
 
     void Update()

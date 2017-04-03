@@ -25,19 +25,19 @@ public class Underwater : MonoBehaviour {
 	}
 
 	void Update () {
-		if (transform.position.y < underwaterLevel)
-		{
+		//if (transform.position.y < underwaterLevel)
+		//{
 			RenderSettings.fog = true;
 			RenderSettings.fogColor = new Color(0, 0.1f, 0.4f, 0.6f);
 			RenderSettings.fogDensity = 0.04f;
 			RenderSettings.skybox = noSkybox;
-		}
+		/*}
 		else
 		{
 			RenderSettings.fog = defaultFog;
 			RenderSettings.fogColor = defaultFogColor;
 			RenderSettings.fogDensity = defaultFogDensity;
 			RenderSettings.skybox = defaultSkybox;
-		}
+		}*/
 	}
 }

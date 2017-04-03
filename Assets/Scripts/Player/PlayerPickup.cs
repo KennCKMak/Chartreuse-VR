@@ -14,6 +14,12 @@ namespace Assets.Scripts
         public GameObject Hand;
         public GameObject HeldItem;
         public Text PickupItemText;
+		private void Start(){
+			PickupItemText = GameObject.Find ("Canvas").gameObject.transform.
+				FindChild ("Pickup").transform.FindChild ("Text").
+				gameObject.GetComponent<Text>();
+		}
+
 
         private void FixedUpdate()
         {
@@ -37,8 +43,9 @@ namespace Assets.Scripts
                             // TODO: Put this in a method
                             hit.GetComponent<Collider>().enabled = false;
                             hit.transform.parent = Hand.transform;
-                            hit.transform.position = new Vector3(0f,0f,0f);
+                            //hit.transform.position = new Vector3(0f,0f,0f);
                             hit.transform.localPosition = new Vector3(0f,0f,0f);
+							hit.transform.localRotation = Quaternion.identity;
                             HeldItem = hit;
                         } else {
                             HeldItem.transform.parent = null;
@@ -63,7 +70,7 @@ namespace Assets.Scripts
                 if (HeldItem != null)
                 {
                     HeldItem.transform.parent = null;
-                    HeldItem.transform.position = Vector3.zero;
+                    //HeldItem.transform.position = Vector3.zero;
                     HeldItem.GetComponent<Collider>().enabled = true;
                     HeldItem = null;
                 }
