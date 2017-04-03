@@ -1,7 +1,9 @@
 ﻿namespace Assets.Scripts.Pickup
 {
-    public interface IUseableItem
-    {
+    public interface IPickupable {
+
         void UseItem();
+
+        string GetName();
     }
 }
