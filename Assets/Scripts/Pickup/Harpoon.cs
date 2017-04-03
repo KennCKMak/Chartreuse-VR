@@ -1,3 +1,4 @@
+
 ﻿using UnityEngine;
 
 namespace Assets.Scripts.Pickup {
@@ -12,5 +13,5 @@ namespace Assets.Scripts.Pickup {
         {
             return "Harpoon";
         }
-    }
+	}
 }
