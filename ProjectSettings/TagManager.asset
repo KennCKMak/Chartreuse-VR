@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - Shark
   - PlayerProjectile
+  - Pickup
   layers:
   - Default
   - TransparentFX
