@@ -2,21 +2,23 @@
 using Assets.Scripts;
 using UnityEngine;
 
-namespace Utils {
-
     public class Timer : MonoBehaviour {
 
         // Timer static instance
         public static Timer Instance;
 
         // Current time remaining
-        public float OxygenTimer = 300; // 5 minutes
-
-        public float DefaultStartingTimer;
+        public float OxygenTimer;
+        public float DefaultStartingTimer = 300;
 
         // Private constructor since this is a singleton.
         private Timer() { }
 
+        void Start()
+        {
+            OxygenTimer = DefaultStartingTimer;
+
+        }
         void Awake() {
 
             if (Instance == null)
@@ -25,8 +27,7 @@ namespace Utils {
             else if (Instance != this)
                 Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
-            DefaultStartingTimer = OxygenTimer;
+          //  DontDestroyOnLoad(gameObject);
         }
 
         void Update() {
@@ -39,5 +40,10 @@ namespace Utils {
         public float GetTimeRemaining() {
             return OxygenTimer;
         }
+
+    public void resetTimer()
+    {
+        OxygenTimer = DefaultStartingTimer;
     }
-}
+    }
+

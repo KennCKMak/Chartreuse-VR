@@ -4,6 +4,8 @@ namespace Assets.Scripts {
 
     public class GameManager : MonoBehaviour {
 
+       // public GameObject lifeManager;
+
         public static GameManager Instance;
 
         // Private constructor since this is a singleton.
@@ -18,8 +20,10 @@ namespace Assets.Scripts {
             DontDestroyOnLoad(gameObject);
         }
 
-        public void EndGame() {
-
+        public void EndGame() 
+        {
+            LifeManager lifeManager = GameObject.FindObjectOfType<LifeManager>() as LifeManager;
+            if( lifeManager) lifeManager.TakeLife();
         }
     }
 }
