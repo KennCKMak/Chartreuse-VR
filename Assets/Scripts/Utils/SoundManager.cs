@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 namespace Utils {
 
     public enum SoundType {
-        MainMenu, Other
+        MainMenu, UnderwaterAmbient
     }
 
     public class SoundManager : MonoBehaviour {
@@ -12,8 +13,10 @@ namespace Utils {
         public static SoundManager Instance;
         public AudioSource MainSource;
 
-        public static readonly AudioClip MainMenu;
-        public static readonly AudioClip Other;
+        public AudioClip MainMenu;
+        public AudioClip UnderwaterAmbient;
+
+		private string sceneName;
 
         private readonly Dictionary<SoundType, AudioClip> SoundLookup = new Dictionary<SoundType, AudioClip>();
 
@@ -29,17 +32,36 @@ namespace Utils {
             DontDestroyOnLoad(gameObject);
 
             SoundLookup.Add(SoundType.MainMenu, MainMenu);
-            SoundLookup.Add(SoundType.Other, Other);
+            SoundLookup.Add(SoundType.UnderwaterAmbient, UnderwaterAmbient);
+
+
+			sceneName = SceneManager.GetActiveScene ().name;
+			switchSong ();
         }
+		void Update(){
+			if (sceneName != SceneManager.GetActiveScene ().name) {
+				sceneName = SceneManager.GetActiveScene ().name;
+				switchSong ();
+			}
+		}
 
         public void PlaySound(SoundType type) {
             AudioClip clip = SoundLookup[type];
             if (MainSource.isPlaying) {
                 MainSource.Stop();
             }
-            MainSource.clip = clip;
-            MainSource.Play();
+				MainSource.clip = clip;
+				MainSource.Play ();
         }
+
+		public void switchSong(){
+			if (sceneName == "MainMenu") {
+				PlaySound (SoundType.MainMenu);
+			} else if (sceneName == "Main") {
+				PlaySound (SoundType.UnderwaterAmbient);
+			} else
+				Debug.Log ("No correct scene");
+		}
 
         public void StopPlaying() {
             MainSource.Stop();

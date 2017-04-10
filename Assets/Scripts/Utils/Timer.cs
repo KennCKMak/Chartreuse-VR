@@ -1,6 +1,7 @@
 
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
     public class Timer : MonoBehaviour {
 
@@ -31,10 +32,12 @@ using UnityEngine;
         }
 
         void Update() {
-            OxygenTimer -= Time.deltaTime;
-            if (OxygenTimer <= 0) {
-                GameManager.Instance.EndGame();
-            }
+			if (SceneManager.GetActiveScene ().name == "Main") {
+				OxygenTimer -= Time.deltaTime;
+				if (OxygenTimer <= 0) {
+					GameManager.Instance.EndGame ();
+				}
+			}
         }
 
         public float GetTimeRemaining() {

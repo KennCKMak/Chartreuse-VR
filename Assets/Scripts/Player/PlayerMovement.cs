@@ -37,14 +37,14 @@ public class PlayerMovement : MonoBehaviour {
 			if (rigB.velocity.y >= -2)
 				rigB.velocity += (new Vector3 (0, -floatForce, 0));
 		}
-		else {
+		/*else {
 			if (rigB.velocity.y <= 0.1 && rigB.velocity.y >= -0.1)
 				rigB.velocity = new Vector3 (rigB.velocity.x, 0, rigB.velocity.z);
 			else if (rigB.velocity.y >= 0)
 				rigB.velocity += (new Vector3 (0, -floatForce, 0));
 			else if (rigB.velocity.y <= 0)
 				rigB.velocity += (new Vector3 (0, floatForce, 0));
-		}
+		}*/
 	}
 
 	void SwimInput() {

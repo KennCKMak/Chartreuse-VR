@@ -64,11 +64,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if ( Input.GetKey(KeyCode.KeypadPlus))
+		if ( Input.GetKey(KeyCode.KeypadPlus) || Input.GetKey(KeyCode.Alpha0))
         {
             heal(10);     
         }
-        else if ( Input.GetKey(KeyCode.KeypadMinus))
+		else if ( Input.GetKey(KeyCode.KeypadMinus) || Input.GetKey(KeyCode.Alpha9))
         {
             TakeDamage(10);
 

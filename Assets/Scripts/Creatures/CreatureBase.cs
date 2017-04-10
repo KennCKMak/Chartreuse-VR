@@ -114,7 +114,7 @@ public class CreatureBase : MonoBehaviour {
 
 	protected virtual void GetNewWanderTarget(){
 		elapsedTime = 0;
-		MoveTarget(new Vector3 (Random.Range (-10.0f, 10.0f), 7, Random.Range (-10.0f, 10.0f)));
+		MoveTarget(new Vector3 (Random.Range (-100.0f, 100.0f), 25, Random.Range (-100.0f, 100.0f)));
 
 		//randomizer between food or waypoint for target test
 		/*if (Random.Range (0, 3) == 0)

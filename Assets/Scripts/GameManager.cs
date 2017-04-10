@@ -20,6 +20,12 @@ namespace Assets.Scripts {
             DontDestroyOnLoad(gameObject);
         }
 
+		public void Start(){
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+
+		}
+
         public void EndGame() 
         {
             LifeManager lifeManager = GameObject.FindObjectOfType<LifeManager>() as LifeManager;

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Shark : CreatureBase {
 
-	protected float aggressiveness;
+	public float aggressiveness;
+
+	public float health;
 	public GameObject player;
 
 	// Use this for initialization
 	void Start () {
+		health = 100;
 		player = GameObject.FindGameObjectWithTag ("Player").gameObject;
 	}	
 	
@@ -20,7 +23,7 @@ public class Shark : CreatureBase {
 	protected override void Initialize() {
 		CurrentState = CreatureState.Wander;
 		targetPosition = transform.position;
-		curSpeed = 5.0f; curRotSpeed = 4.0f;
+		curSpeed = 5.0f; curRotSpeed = 2.0f;
 		SetTarget (transform.FindChild("Target").gameObject);
 		SetTargetParent (null);
 		GetNewWanderTarget ();
@@ -43,7 +46,8 @@ public class Shark : CreatureBase {
 	}
 
 	protected override void UpdateWanderState() {
-		aggressiveness += 0.1f;
+		aggressiveness += 0.2f;
+		elapsedTime += Time.deltaTime;
 		if (aggressiveness >= 150f) { //arbitrary case to initiate chase status
 			SwitchCurrentStateTo (CreatureState.Chase);
 		} else {
@@ -51,6 +55,10 @@ public class Shark : CreatureBase {
 			if (Mathf.Abs(Vector3.Distance(target.transform.position, transform.position)) <= 1.0f) { //start lunging
 				GetNewWanderTarget();
 			}
+		}
+		if (elapsedTime >= 7) {
+			GetNewWanderTarget ();
+			elapsedTime = 0;
 		}
 	}
 
@@ -68,15 +76,17 @@ public class Shark : CreatureBase {
 		if (Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) <= 4.0f) { //start lunging
 			AttackTarget (player);
 		}
-		if (Mathf.Abs (Vector3.Distance (player.transform.position, transform.position)) <= 0.1f) { //if hit food, reset the object
+		if (Mathf.Abs (Vector3.Distance (player.transform.position, transform.position)) <= 0.2f) { //if hit food, reset the object
 			// SCRIPT TO HIT PLAYER HEALTH
 			Debug.Log ("Hit player!");
+			player.GetComponent<PlayerController> ().TakeDamage (10);
 			aggressiveness = 0;
 		}
 
-		if (Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) >= 4.1f && attacking) { //stop lunging
+		if (Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) >= 6.0f && attacking) { //stop lunging
 			attacking = false;
 			SwitchCurrentStateTo (CreatureState.Chase);
+			GetNewWanderTarget ();
 		}
 	}
 }

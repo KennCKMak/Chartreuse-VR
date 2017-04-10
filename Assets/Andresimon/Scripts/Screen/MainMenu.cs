@@ -30,8 +30,8 @@ public class MainMenu : MonoBehaviour
 
     private void ClearSingletons()
     {
-        //PlayerController player = FindObjectOfType<PlayerController>();
-       // if (player) Destroy(player.gameObject);
+       Timer timerScript = FindObjectOfType<Timer>();
+		timerScript.resetTimer ();
 
     }
 

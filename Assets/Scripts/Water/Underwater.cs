@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Underwater : MonoBehaviour {
 
+	//This should go into the player prefab
+
 	//This script enables underwater effects. Attach to main camera.
 
 	//Define variable
@@ -22,15 +24,20 @@ public class Underwater : MonoBehaviour {
 		defaultFogColor = RenderSettings.fogColor;
 		defaultFogDensity = RenderSettings.fogDensity;
 		defaultSkybox = RenderSettings.skybox;
+
+		mainCamera = Camera.main;
+
+		//Debug.Log("setting fog");
+		RenderSettings.fog = true;
+		RenderSettings.fogColor = new Color(0, 0.1f, 0.4f, 0.6f);
+		RenderSettings.fogDensity = 0.01f;
+		RenderSettings.skybox = noSkybox;
 	}
 
 	void Update () {
 		//if (transform.position.y < underwaterLevel)
 		//{
-			RenderSettings.fog = true;
-			RenderSettings.fogColor = new Color(0, 0.1f, 0.4f, 0.6f);
-			RenderSettings.fogDensity = 0.04f;
-			RenderSettings.skybox = noSkybox;
+
 		/*}
 		else
 		{
