@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4664842817752788}
   - component: {fileID: 33647848328580080}
-  - component: {fileID: 135213793096628926}
   - component: {fileID: 23886141110778242}
   m_Layer: 0
   m_Name: Hand
@@ -75,7 +74,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4750253937511220}
   - component: {fileID: 33282506259532106}
-  - component: {fileID: 135308669879724012}
   - component: {fileID: 23742441763391864}
   m_Layer: 0
   m_Name: Sphere
@@ -171,11 +169,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4713443505458934}
   - component: {fileID: 33340568501691724}
-  - component: {fileID: 65413008493581526}
   - component: {fileID: 23567015716454342}
-  - component: {fileID: 114122254862578866}
   - component: {fileID: 54141266276816908}
   - component: {fileID: 114961101109389018}
+  - component: {fileID: 114102296834934038}
+  - component: {fileID: 114287469282347832}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -272,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1974132632535052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.14, y: 0.89, z: -10.11}
+  m_LocalPosition: {x: 2.14, y: 4.29, z: -10.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4198664036991422}
@@ -523,18 +521,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65413008493581526
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1974132632535052}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81639169590310792
 AudioListener:
   m_ObjectHideFlags: 1
@@ -564,7 +550,7 @@ MonoBehaviour:
   Hand: {fileID: 1257503961795348}
   HeldItem: {fileID: 0}
   PickupItemText: {fileID: 0}
---- !u!114 &114122254862578866
+--- !u!114 &114102296834934038
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -572,14 +558,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1974132632535052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a39b529211d614dbab87f51eeb03e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3599621d5520f7e44aef787d5979e56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   floatForce: 2
   moveSpeed: 6
   rotSpeed: 10
+  slowingSpeed: 0.2
   waveSpeed: 1
   rigB: {fileID: 0}
+--- !u!114 &114287469282347832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1974132632535052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3162fdf19e4ed6a2c2e65d0e2e8243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 100
+  Hand: {fileID: 0}
+  HeldItem: {fileID: 0}
+  PickupItemText: {fileID: 0}
 --- !u!114 &114763753361632248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,30 +620,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1285715479864690}
   m_Enabled: 1
---- !u!135 &135213793096628926
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1257503961795348}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135308669879724012
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1345951099932780}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212299968770130920
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -19,7 +19,7 @@ public class CreatureBase : MonoBehaviour {
 	}
 	public CreatureState CurrentState;
 
-	public GameObject target;
+	public GameObject target; //each creature has a target game object to follow
 	protected Vector3 targetPosition; //destination transform
 
 	public float curSpeed;
@@ -52,12 +52,11 @@ public class CreatureBase : MonoBehaviour {
 	}
 
 
-	public virtual void Initialize() {
+	protected virtual void Initialize() {
 		CurrentState = CreatureState.Wander;
 		targetPosition = transform.position;
 		curSpeed = 4.0f; curRotSpeed = 5.0f;
 		SetTarget (transform.FindChild("Target").gameObject);
-		Debug.Log ("Setting Target");
 		SetTargetParent (null);
 		GetNewWanderTarget ();
 	}
