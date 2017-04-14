@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43697065, g: 0.4846511, b: 0.5649089, a: 1}
+  m_IndirectSpecularColor: {r: 0.43697074, g: 0.48465127, b: 0.5649094, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -492,16 +492,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114008270923151292, guid: 711039de1940a4b4c85b3fce3d1b9673,
-        type: 2}
-      propertyPath: PickupItemText
-      value: 
-      objectReference: {fileID: 1816732590}
     - target: {fileID: 114322070941916878, guid: 711039de1940a4b4c85b3fce3d1b9673,
         type: 2}
       propertyPath: healthStat.bar
       value: 
       objectReference: {fileID: 2054663934}
+    - target: {fileID: 114008270923151292, guid: 711039de1940a4b4c85b3fce3d1b9673,
+        type: 2}
+      propertyPath: PickupItemText
+      value: 
+      objectReference: {fileID: 1816732590}
+    - target: {fileID: 114522100967724494, guid: 711039de1940a4b4c85b3fce3d1b9673,
+        type: 2}
+      propertyPath: WaitTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114522100967724494, guid: 711039de1940a4b4c85b3fce3d1b9673,
+        type: 2}
+      propertyPath: FishBait
+      value: 
+      objectReference: {fileID: 1990961745161052, guid: 0a7bc9f22f893b84bb7d852d1a82353b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 711039de1940a4b4c85b3fce3d1b9673, type: 2}
   m_IsPrefabParent: 0

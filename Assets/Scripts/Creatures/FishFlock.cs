@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishFlock : MonoBehaviour {
 
-	protected GameObject target;
+	public GameObject target;
 	protected Vector3 StartLocation;
 	protected GameObject[] Fishes;
 	protected Vector3[] fishLocations;
