@@ -9,6 +9,8 @@ TagManager:
   - Shark
   - PlayerProjectile
   - Pickup
+  - Weapon
+  - Creature
   layers:
   - Default
   - TransparentFX

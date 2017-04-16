@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114413829883307168}
   m_Layer: 0
   m_Name: Megalodon
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,3 +224,6 @@ MonoBehaviour:
   target: {fileID: 0}
   curSpeed: 0
   curRotSpeed: 0
+  aggressiveness: 0
+  health: 0
+  player: {fileID: 0}
