@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33786841937457750}
   - component: {fileID: 23369890080084610}
   - component: {fileID: 111699694785523336}
+  - component: {fileID: 64160140436101330}
   m_Layer: 0
   m_Name: HarpoonModel
   m_TagString: Weapon
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 4381347139123768}
   - component: {fileID: 114869421589318834}
   - component: {fileID: 136129580858360418}
+  - component: {fileID: 64049264092771150}
   m_Layer: 0
   m_Name: Harpoon
   m_TagString: Pickup
@@ -53,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722521726134750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0934167, y: 0.34, z: -2.598012}
+  m_LocalPosition: {x: 4.0934167, y: 9.8, z: -2.598012}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4907289474146052}
@@ -111,6 +113,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1643597689595440}
   m_Mesh: {fileID: 4300000, guid: c7e75daab8e654982becadebf707c5d6, type: 3}
+--- !u!64 &64049264092771150
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722521726134750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c7e75daab8e654982becadebf707c5d6, type: 3}
+--- !u!64 &64160140436101330
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643597689595440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: c7e75daab8e654982becadebf707c5d6, type: 3}
 --- !u!111 &111699694785523336
 Animation:
   m_ObjectHideFlags: 1
@@ -143,9 +173,9 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722521726134750}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   m_Radius: 0.1
-  m_Height: 2
+  m_Height: 0.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.89, z: 0}

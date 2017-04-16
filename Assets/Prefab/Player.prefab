@@ -624,7 +624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab0bbb338444196b1e5b31fb47b654c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FishBait: {fileID: 1990961745161052, guid: 0a7bc9f22f893b84bb7d852d1a82353b, type: 2}
   FishFlock: {fileID: 1403707303320294, guid: ee015e8fc0e06d1498e6a9936d24d950, type: 2}
+  WaitTime: 2
 --- !u!114 &114763753361632248
 MonoBehaviour:
   m_ObjectHideFlags: 1

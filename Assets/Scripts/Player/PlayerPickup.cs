@@ -41,7 +41,8 @@ namespace Assets.Scripts
                         {
 
                             // TODO: Put this in a method
-                            hit.GetComponent<Collider>().enabled = false;
+							hit.GetComponent<MeshCollider>().enabled = false;
+                            hit.GetComponent<CapsuleCollider>().enabled = true;
                             hit.transform.parent = Hand.transform;
                             //hit.transform.position = new Vector3(0f,0f,0f);
                             hit.transform.localPosition = new Vector3(0f,0f,0f);
@@ -51,7 +52,8 @@ namespace Assets.Scripts
                             HeldItem.transform.parent = null;
                             HeldItem.transform.position = Vector3.zero;
 
-                            hit.GetComponent<Collider>().enabled = false;
+							hit.GetComponent<MeshCollider>().enabled = true;
+							hit.GetComponent<CapsuleCollider>().enabled = false;
                             hit.transform.parent = Hand.transform;
                             hit.transform.position = new Vector3(0f,0f,0f);
                             hit.transform.localPosition = new Vector3(0f,0f,0f);

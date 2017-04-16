@@ -11,7 +11,9 @@ namespace Assets.Scripts {
         // Private constructor since this is a singleton.
         private GameManager() { }
 
-        private void Awake() {
+
+
+		private void Awake() {
             if (Instance == null) {
                 Instance = this;
             } else if (Instance != this)
@@ -25,6 +27,7 @@ namespace Assets.Scripts {
 			Cursor.visible = false;
 
 		}
+
 
         public void EndGame() 
         {

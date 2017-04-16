@@ -30,7 +30,7 @@ public class Underwater : MonoBehaviour {
 		//Debug.Log("setting fog");
 		RenderSettings.fog = true;
 		RenderSettings.fogColor = new Color(0, 0.1f, 0.4f, 0.6f);
-		RenderSettings.fogDensity = 0.01f;
+		RenderSettings.fogDensity = 0.02f;
 		RenderSettings.skybox = noSkybox;
 	}
 

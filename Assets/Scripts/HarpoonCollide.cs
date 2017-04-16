@@ -14,10 +14,13 @@ public class HarpoonCollide : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.tag == "Creature") {
-			transform.parent = col.transform;
-			Debug.Log ("collision with harpoon");
+
+			if (col.gameObject.name == "MegalodanModel") {
+				Debug.Log ("hit shark");
+
+			}
 
 		}
 	
-}
+	}
 }

@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4032698690906334}
   - component: {fileID: 33613844992946048}
   - component: {fileID: 23115135861603906}
+  - component: {fileID: 64615516932961446}
   m_Layer: 0
-  m_Name: tuna
-  m_TagString: Untagged
+  m_Name: TunaModel
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +182,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879119357554850}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &64615516932961446
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1150722984864400}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: d3459c2af43002040adb2476007dc8fe, type: 3}
 --- !u!65 &65678480928983178
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -206,5 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   target: {fileID: 0}
+  targetFood: {fileID: 0}
   curSpeed: 0
   curRotSpeed: 0
+  movementRange: 0
+  flocking: 0
+  foods: []

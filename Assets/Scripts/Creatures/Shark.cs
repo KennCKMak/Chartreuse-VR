@@ -10,6 +10,10 @@ public class Shark : CreatureBase {
 	public GameObject player;
 
 	// Use this for initialization
+	void Awake(){
+		Initialize();
+	}
+
 	void Start () {
 		health = 100;
 		player = GameObject.FindGameObjectWithTag ("Player").gameObject;
@@ -26,7 +30,17 @@ public class Shark : CreatureBase {
 		curSpeed = 5.0f; curRotSpeed = 2.0f;
 		SetTarget (transform.FindChild("Target").gameObject);
 		SetTargetParent (null);
+
+		health = 100;
+		movementRange = 100;
 		GetNewWanderTarget ();
+	}
+		
+
+	public override void takeDamage(float damage){
+		health -= damage;
+		aggressiveness -= 50;
+		CheckHealth ();
 	}
 
 	protected override void CreatureUpdate() {
@@ -62,7 +76,7 @@ public class Shark : CreatureBase {
 		}
 	}
 
-	protected virtual void UpdateChaseState(){
+	protected override void UpdateChaseState(){
 		MoveToward (player.transform.position);
 		if (Mathf.Abs(Vector3.Distance(player.transform.position, transform.position)) <= 4.0f) { //if reached chase target, attack
 			SwitchCurrentStateTo(CreatureState.Attack);

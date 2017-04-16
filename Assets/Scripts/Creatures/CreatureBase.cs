@@ -20,10 +20,15 @@ public class CreatureBase : MonoBehaviour {
 	public CreatureState CurrentState;
 
 	public GameObject target; //each creature has a target game object to follow
+	public GameObject targetFood; // a reference to the targeted food object
 	protected Vector3 targetPosition; //destination transform
 
 	public float curSpeed;
 	public float curRotSpeed;
+
+	public float movementRange; //
+
+	protected float health;
 
 	protected float elapsedTime = 0.0f;
 
@@ -32,7 +37,7 @@ public class CreatureBase : MonoBehaviour {
 
 	protected bool attacking;
 
-	protected bool flocking; //is this thing a part of a flock?
+	public bool flocking = false; //is this thing a part of a flock?
 	protected GameObject flockingLeader; //Is this thing the leader?
 	protected Transform FlockDisplacement; //Dispalcement from leader
 
@@ -40,7 +45,7 @@ public class CreatureBase : MonoBehaviour {
 	// Use this for initialization
 
 	void Awake() {
-		Initialize ();	
+		//Initialize ();	
 	}
 
 	void Start () {
@@ -51,6 +56,23 @@ public class CreatureBase : MonoBehaviour {
 		CreatureUpdate ();
 	}
 
+	protected void CheckHealth(){
+		if (health <= 0) {
+			SwitchCurrentStateTo (CreatureState.Dead);
+		}
+	}
+
+	public virtual void takeDamage(float damage){
+		health -= damage;
+		CheckHealth ();
+	}
+
+	public bool isDead(){
+		if (CurrentState == CreatureState.Dead) {
+			return true;
+		} else
+			return false;
+	}
 
 	protected virtual void Initialize() {
 		CurrentState = CreatureState.Wander;
@@ -58,6 +80,9 @@ public class CreatureBase : MonoBehaviour {
 		curSpeed = 4.0f; curRotSpeed = 5.0f;
 		SetTarget (transform.FindChild("Target").gameObject);
 		SetTargetParent (null);
+		SetTargetFood (target);
+		health = 5;
+		movementRange = 100;
 		GetNewWanderTarget ();
 	}
 
@@ -113,14 +138,15 @@ public class CreatureBase : MonoBehaviour {
 	}
 
 	protected virtual void GetNewWanderTarget(){
-		elapsedTime = 0;
-		MoveTarget(new Vector3 (Random.Range (-100.0f, 100.0f), 25, Random.Range (-100.0f, 100.0f)));
-
-		//randomizer between food or waypoint for target test
-		/*if (Random.Range (0, 3) == 0)
+		if (!flocking) {
+			elapsedTime = 0;
+			MoveTarget (new Vector3 (Random.Range (-movementRange, movementRange), 25, Random.Range (-movementRange, movementRange)));
+			//randomizer between food or waypoint for target test
+			/*if (Random.Range (0, 3) == 0)
 			target.transform.name = "WayPoint";
 		else
 			target.transform.name = "Food";*/
+		}
 	}
 
 	public void MoveTarget(Vector3 targetLocation){
@@ -129,6 +155,10 @@ public class CreatureBase : MonoBehaviour {
 
 	public void SetTarget(GameObject newTarget){
 		target = newTarget;
+	}
+
+	public void SetTargetFood(GameObject newTarget){
+		targetFood = newTarget;
 	}
 
 	public void SetTargetParent(Transform newParent){
