@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 33796093290594340}
   - component: {fileID: 23851310327745928}
   - component: {fileID: 95575829499196722}
+  - component: {fileID: 64357444889484048}
   m_Layer: 0
   m_Name: MegalodonModel
   m_TagString: Creature
@@ -58,7 +59,7 @@ GameObject:
   - component: {fileID: 23891182659047678}
   m_Layer: 0
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436636834821138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.602, z: -0.502}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children: []
   m_Father: {fileID: 4253769826045554}
@@ -98,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833902865921938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.6546733}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_Children: []
   m_Father: {fileID: 4253769826045554}
@@ -180,6 +181,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436636834821138}
   m_Mesh: {fileID: 4300000, guid: 8696750ebe109a84095b458ae910e015, type: 3}
+--- !u!64 &64357444889484048
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436636834821138}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 8696750ebe109a84095b458ae910e015, type: 3}
 --- !u!65 &65184679989151874
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -220,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98697b269c362454f81a070f1dcab42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState: 0
+  CurrentState: 3
   target: {fileID: 0}
   targetFood: {fileID: 0}
   curSpeed: 0
